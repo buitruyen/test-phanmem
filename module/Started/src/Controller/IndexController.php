@@ -17,7 +17,7 @@ class IndexController extends AbstractActionController
         
         return new ViewModel();
     }
-	public function edit1Action()
+	public function editAction()
 	{
 		echo "Hello action edit1";
 		return FALSE;

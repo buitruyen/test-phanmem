@@ -15,42 +15,32 @@
 		'router'       => [
 			'routes' => [
 				'started' => [
-					'type'          => Segment::class ,
+					'type'          => Literal::class ,
 					'options'       => [
-						'route'       => '/started' ,
-						//						'route'    => '/started[/:action][/:id]',
-						'defaults'    => [
+						'route'    => '/started' ,
+						'defaults' => [
 							'controller' => Controller\IndexController::class ,
 							'action'     => 'index' ,
 						] ,
-						'constraints' => [
-							'action' => '[a-zA-Z0-9]*' ,
-							'id'     => '[0-9]*',
-						] ,
 					] ,
+//					'may_terminate' => TRUE ,
 					'may_terminate' => FALSE ,
 					'child_routes'  => [
 						'login' => [
-							'type'        => Literal::class ,
-							'options'     => [
-								'route' => '/login',
-								'defaults' =>[
-									'controller' => Controller\UserController::class ,
-									'action' =>'login'
-								]
+							'type'    => Segment::class ,
+							'options' => [
+								'route'       => '[/:action][/:id]' ,
+								'defaults'    => [
+									'controller' =>Controller\UserController::class,
+									'action'     => 'login' ,
+								] ,
+								'constraints' => [
+									'action' => '[a-zA-Z0-9]*' ,
+									'id'     => '[0-9]*' ,
+								] ,
 							] ,
-						],
-						'logout' => [
-							'type'        => Literal::class ,
-							'options'     => [
-								'route' => '/logout',
-								'defaults' =>[
-									'controller' => Controller\UserController::class ,
-									'action' =>'logout'
-								]
-							] ,
-						],
-					],
+						] ,
+					] ,
 				
 				] ,
 			] ,
@@ -58,7 +48,7 @@
 		'controllers'  => [
 			'factories' => [
 				Controller\IndexController::class => InvokableFactory::class ,
-				Controller\UserController::class => InvokableFactory::class ,
+				Controller\UserController::class  => InvokableFactory::class ,
 			] ,
 		] ,
 		'view_manager' => [
