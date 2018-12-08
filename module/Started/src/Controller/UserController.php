@@ -10,22 +10,25 @@
 			$checkMethod = $this -> getRequest();
 			
 			if($checkMethod -> isGet()){
-				$action = $this -> params() -> fromRoute('page' , 'abc');
+				$action = $this -> params() -> fromRoute('action' , 'abc');
 				$id     = $this -> params() -> fromRoute('id' , '1');
 				
-				echo "<br/>";
-				echo $action;
 				
-				echo "<br/>";
-				echo $id;
 				
 			}else{
-				$var =$this->params() ->fromPost('name','TruyenPro');
-				echo $var ."<br/>";
-				echo "Not method get";
+				$action='index';
+				$id=-1;
 			}
+			if($id >=0){
+//				$this->getResponse() ->setStatusCode(404);
+//				return;
+				throw new \Exception("id $id khong duoc tim thay");
 			
-			return FALSE;
+			}
+			return new ViewModel([
+				'id' =>$id,
+				'action' =>$action
+			                     ]);
 		}
 		
 		public function logoutAction(){
