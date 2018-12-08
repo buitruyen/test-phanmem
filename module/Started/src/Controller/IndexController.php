@@ -5,7 +5,7 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Application\Controller;
+namespace Started\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -14,11 +14,8 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    	echo "vfvnhv";
+        
         return new ViewModel();
     }
-	public function editAction()
-	{
-		return new ViewModel();
-	}
+	
 }
