@@ -14,7 +14,7 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        
+      
         return new ViewModel();
     }
 	public function editAction()
@@ -23,9 +23,5 @@ class IndexController extends AbstractActionController
 		return FALSE;
 	}
 	
-//	public function loginAction(){
-//	 echo 'Login Page';
-//	 return FALSE;
-//	}
-	
+ 
 }
