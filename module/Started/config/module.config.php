@@ -30,17 +30,24 @@
 					] ,
 					'may_terminate' => FALSE ,
 					'child_routes'  => [
-						'sub_route' => [
-							'type'        => Segment::class ,
+						'login' => [
+							'type'        => Literal::class ,
 							'options'     => [
-								'route' => '[/:action][/:id]',
+								'route' => '/login',
 								'defaults' =>[
 									'controller' => Controller\UserController::class ,
+									'action' =>'login'
 								]
 							] ,
-							'constraints' => [
-								'action' => '[a-zA-Z0-9]*' ,
-								'id'     => '[0-9]*',
+						],
+						'logout' => [
+							'type'        => Literal::class ,
+							'options'     => [
+								'route' => '/logout',
+								'defaults' =>[
+									'controller' => Controller\UserController::class ,
+									'action' =>'logout'
+								]
 							] ,
 						],
 					],

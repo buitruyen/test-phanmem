@@ -11,4 +11,8 @@
 			echo 'Login Page';
 			return FALSE;
 		}
+		public function logoutAction(){
+			echo 'Logout Page';
+			return FALSE;
+		}
 	}
