@@ -23,4 +23,9 @@ class IndexController extends AbstractActionController
 		return FALSE;
 	}
 	
+//	public function loginAction(){
+//	 echo 'Login Page';
+//	 return FALSE;
+//	}
+	
 }
