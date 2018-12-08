@@ -19,7 +19,7 @@
 				$action='index';
 				$id=-1;
 			}
-			if($id >=0){
+			if($id =0){
 //				$this->getResponse() ->setStatusCode(404);
 //				return;
 				throw new \Exception("id $id khong duoc tim thay");

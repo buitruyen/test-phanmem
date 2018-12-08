@@ -7,6 +7,7 @@
 	
 	namespace Started;
 	
+	use phpDocumentor\Reflection\DocBlock\Tags\Uses;
 	use Zend\Router\Http\Literal;
 	use Zend\Router\Http\Segment;
 	use Zend\ServiceManager\Factory\InvokableFactory;
@@ -31,7 +32,7 @@
 							'options' => [
 								'route'       => '[/:action][/:id]' ,
 								'defaults'    => [
-									'controller' =>Controller\UserController::class,
+									'controller' =>"User",
 									'action'     => 'login' ,
 								] ,
 								'constraints' => [
@@ -47,9 +48,16 @@
 		] ,
 		'controllers'  => [
 			'factories' => [
-				Controller\IndexController::class => InvokableFactory::class ,
-				Controller\UserController::class  => InvokableFactory::class ,
+//				Controller\IndexController::class => InvokableFactory::class ,
+//				Controller\UserController::class  => InvokableFactory::class ,
+				Controller\UserController::class  => \Started\Controller\Factory\IndexControllerFactory::class
 			] ,
+			'invokables' =>[
+				'UserController' =>\Started\Controller\UserController::class
+			],
+			'aliases' =>[
+				'User' =>'UserController'
+			]
 		] ,
 		'view_manager' => [
 			
