@@ -14,38 +14,21 @@
 	return [
 		'router'       => [
 			'routes' => [
-//            'started' => [ //Name router
-//                'type'    => Segment::class, //type router
-//                'options' => [
-//                    'route'    => '/started[/:action]',
-//                    'defaults' => [
-//                        'controller' => Controller\IndexController::class,
-//                        'action'     => 'index',
-//                    ],
-//                ],
-//            ],
-
-'started' => [
-	'type'    => Literal::class ,
-	'options' => [
-		'route'    => '/started' ,
-		'defaults' => [
-			'controller' => Controller\IndexController::class ,
-			'action'     => 'index' ,
-		] ,
-	] ,
-] ,
-
-'started-edit' => [
-	'type'    => Literal::class ,
-	'options' => [
-		'route'    => '/started/edit' ,
-		'defaults' => [
-			'controller' => Controller\IndexController::class ,
-			'action'     => 'edit' ,
-		] ,
-	] ,
-] ,
+				'started' => [
+					'type'       => Segment::class ,
+					'options'    => [
+						'route'    => '/started[/:action][/:id]',
+						'defaults' => [
+							'controller' => Controller\IndexController::class ,
+							'action'     => 'index' ,
+						] ,
+						'constraints' => [
+							'action' => '[a-zA-Z0-9]*',
+							'id' =>'[0-9]*'
+						],
+					] ,
+					
+				] ,
 			] ,
 		] ,
 		'controllers'  => [
