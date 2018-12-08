@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<zend-config>
+    <router>
+        <routes>
+            <home>
+                <type>Zend\Router\Http\Literal</type>
+                <options>
+                    <route>/</route>
+                    <defaults>
+                        <controller>Training\Controller\IndexController</controller>
+                        <action>index</action>
+                    </defaults>
+                </options>
+            </home>
+
+            <training>
+                <type>Zend\Router\Http\Segment</type>
+                <options>
+                    <route>/training/index[/:action]</route>
+                    <defaults>
+                        <controller>Training\Controller\IndexController</controller>
+                        <action>index</action>
+                    </defaults>
+                </options>
+            </training>
+
+            <config>
+                <type>Zend\Router\Http\Segment</type>
+                <options>
+                    <route>/training/config[/:action]</route>
+                    <defaults>
+                        <controller>Training\Controller\ConfigController</controller>
+                        <action>index</action>
+                    </defaults>
+                </options>
+            </config>
+
+        </routes>
+    </router>
+
+    <controllers>
+        <factories>
+            <IndexController>Zend\ServiceManager\Factory\InvokableFactory</IndexController>
+            <ConfigController>Zend\ServiceManager\Factory\InvokableFactory</ConfigController>
+        </factories>
+    </controllers>
+
+</zend-config>
+

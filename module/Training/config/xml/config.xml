@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zend-config>
+    <website>www.zend.vn</website>
+    <account>
+        <email>namtruyenpro95@gmail.com</email>
+        <password>134</password>
+        <title>ZendConfig</title>
+        <content>Training zendConfig</content>
+        <port>465</port>
+    </account>
+</zend-config>
+
