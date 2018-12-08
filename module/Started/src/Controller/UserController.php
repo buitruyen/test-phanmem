@@ -8,23 +8,23 @@
 	class UserController extends AbstractActionController{
 		public function loginAction(){
 			$checkMethod = $this -> getRequest();
-			// isget ->true:get
-			// isPost ->true:post
-//			if($checkMethod -> isGet()){
-//				echo "using method get";
-//
-//			}else{
-//				echo "Not method get";
-//			}
-			if($checkMethod -> isPost()){
-				echo "using method Post";
+			
+			if($checkMethod -> isGet()){
+				$action = $this -> params() -> fromRoute('page' , 'abc');
+				$id     = $this -> params() -> fromRoute('id' , '1');
+				
+				echo "<br/>";
+				echo $action;
+				
+				echo "<br/>";
+				echo $id;
 				
 			}else{
-				echo "Not method Post";
+				$var =$this->params() ->fromPost('name','TruyenPro');
+				echo $var ."<br/>";
+				echo "Not method get";
 			}
-			echo $checkMethod ->getMethod();
-			echo '"<br/>"';
-			echo $checkMethod ->getUriString();
+			
 			return FALSE;
 		}
 		
