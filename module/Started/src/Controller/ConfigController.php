@@ -55,21 +55,21 @@
 			$proccessor = new \Zend\Config\Processor\Token();
 			$proccessor -> addToken('token' , 'hello');
 			$proccessor -> process($config);
-			echo "<pre style='font-size: 17px;'>";
-			print_r($config);
-			echo "</pre>";
 			
 			return new ViewModel();
 		}
 		
 		public function index2Action(){
+			$config = include __DIR__.'/../../../Started/config/module.config.php';
+			echo "<pre style='font-size: 17px;'>";
+			print_r($config);
+			echo "</pre>";
 			
 			$reader = new Ini();
 			$reader -> setNestSeparator('-');
 			$data = $reader -> fromFile(__DIR__.'/../../config/ini/module.config.ini');
-			echo "<pre style='font-size: 17px;'>";
-			print_r($data);
-			echo "</pre>";
+			
+			
 			// ============================
 			$config                                   = new Config([] , TRUE);
 			$config -> production                     = [];
@@ -81,7 +81,7 @@
 			$writer = new \Zend\Config\Writer\Ini();
 			$writer ->setNestSeparator('-');
 			$writer -> toFile(__DIR__.'/../../config/ini/module.config1.ini' , $config);
-			return FALSE;
+			return new ViewModel();
 		}
 		
 	}
