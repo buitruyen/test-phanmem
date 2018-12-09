@@ -67,7 +67,7 @@
 			
 			$reader = new Ini();
 			$reader -> setNestSeparator('-');
-			$data = $reader -> fromFile(__DIR__.'/../../config/ini/module.config.ini');
+			$data = $reader -> fromFile(__DIR__.'/../../config/module.config.ini');
 			
 			
 			// ============================
@@ -80,7 +80,7 @@
 			
 			$writer = new \Zend\Config\Writer\Ini();
 			$writer ->setNestSeparator('-');
-			$writer -> toFile(__DIR__.'/../../config/ini/module.config1.ini' , $config);
+//			$writer -> toFile(__DIR__.'/../../config/ini/module.config1.ini' , $config);
 			return new ViewModel();
 		}
 		

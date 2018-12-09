@@ -5,22 +5,23 @@
 	 * @license   http://framework.zend.com/license/new-bsd New BSD License
 	 */
 	
-	namespace Training;
+	namespace Started;
 	
 	use Zend\Router\Http\Literal;
 	use Zend\Router\Http\Segment;
 	use Zend\ServiceManager\Factory\InvokableFactory;
 	
 	return [
-		'controllers'  => [
+		'controllers' => [
 			'factories' => [
-				Controller\IndexController::class  => InvokableFactory::class ,
-				Controller\ConfigController::class => InvokableFactory::class ,
-			] ,
-		] ,
+				Controller\IndexController::class => InvokableFactory::class,
+				Controller\ConfigController::class => InvokableFactory::class,
+			],
+		],
 		'view_manager' => [
+			
 			'template_path_stack' => [
-				__DIR__.'/../../view' ,
-			] ,
-		] ,
+				__DIR__ . '/../view',
+			],
+		],
 	];
