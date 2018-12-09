@@ -10,6 +10,7 @@
 	use Zend\Config\Config;
 	use Zend\Config\Processor\Filter;
 	use Zend\Config\Processor\Queue;
+	use Zend\Config\Reader\Ini;
 	use Zend\Filter\StringToUpper;
 	use Zend\Filter\StripTags;
 	use Zend\Mvc\Controller\AbstractActionController;
@@ -59,6 +60,18 @@
 			echo "</pre>";
 			
 			return new ViewModel();
+		}
+		
+		public function index2Action(){
+			
+			$reader = new Ini();
+			$reader ->setNestSeparator('-');
+			$data   = $reader -> fromFile(__DIR__.'/../../config/ini/module.config.ini');
+			echo "<pre style='font-size: 17px;'>";
+			print_r($data);
+			echo "</pre>";
+			
+			return FALSE;
 		}
 		
 	}
