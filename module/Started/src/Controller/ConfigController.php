@@ -8,7 +8,10 @@
 	namespace Started\Controller;
 	
 	use Zend\Config\Config;
-	use Zend\Config\Processor\Constant;
+	use Zend\Config\Processor\Filter;
+	use Zend\Config\Processor\Queue;
+	use Zend\Filter\StringToUpper;
+	use Zend\Filter\StripTags;
 	use Zend\Mvc\Controller\AbstractActionController;
 	use Zend\View\Model\ViewModel;
 	
@@ -18,7 +21,7 @@
 			$arrayConfig = [
 				'website' => 'zend.vn' ,
 				'account' => [
-					'email'    => 'zend2@gmail.com' ,
+					'email'    => '<h3>email : </h3>zend2@gmail.com' ,
 					'password' => '1111234' ,
 					'title'    => 'zendConfig' ,
 					'content'  => 'tranining Zend config' ,
@@ -26,22 +29,30 @@
 				] ,
 			
 			];
-			// 01 chuyển mạng config thành mạng đối tượng config
-			$config = new Config($arrayConfig);
-			echo "<pre style='font-size: 17px;'>";
-			print_r($config);
-			echo "</pre>";
-			echo "<br/>".$config -> website;
-			echo "<br/>".$config -> account -> port;
-			echo "<br/>".$config -> account -> get('port1' , 500);
-			echo "<br/>".$config -> account -> get('port' , 500);
-			// 02  Convernt file config thành 1 đối tượng đối tượng config
-			$config = new Config(include __DIR__.'/../../../Started/config/module.config.php');
-			// 03
-			define('MYCONST' , 'this is a const');
 			
-			$config     = new Config([ 'const' => 'MYCONST' ],true);
-			$proccessor = new Constant();
+			$config     = new Config($arrayConfig , TRUE);
+			$filter     = new StringToUpper();
+			$proccessor = new Filter($filter);
+			$proccessor -> process($config);
+			
+			// ===============================
+			
+			$config          = new Config($arrayConfig , TRUE);
+			$filterUpper     = new StringToUpper();
+			$filterStripTags = new StripTags();
+			
+			$proccessorUpper = new Filter($filterUpper);
+			$proccessorTags  = new Filter($filterStripTags);
+			$queu            = new Queue();
+			$queu -> insert($proccessorUpper);
+			$queu -> insert($proccessorTags);
+			$queu -> process($config);
+			
+			// ==================================
+			
+			$config     = new Config([ 'token' => 'Value token : token' ] , TRUE);
+			$proccessor = new \Zend\Config\Processor\Token();
+			$proccessor -> addToken('token' , 'hello');
 			$proccessor -> process($config);
 			echo "<pre style='font-size: 17px;'>";
 			print_r($config);
