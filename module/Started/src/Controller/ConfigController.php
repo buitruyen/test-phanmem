@@ -65,12 +65,22 @@
 		public function index2Action(){
 			
 			$reader = new Ini();
-			$reader ->setNestSeparator('-');
-			$data   = $reader -> fromFile(__DIR__.'/../../config/ini/module.config.ini');
+			$reader -> setNestSeparator('-');
+			$data = $reader -> fromFile(__DIR__.'/../../config/ini/module.config.ini');
 			echo "<pre style='font-size: 17px;'>";
 			print_r($data);
 			echo "</pre>";
+			// ============================
+			$config                                   = new Config([] , TRUE);
+			$config -> production                     = [];
+			$config -> production -> website          = "www.zend.vn";
+			$config -> production -> account          = [];
+			$config -> production -> account -> email = "truyen@gmail.com";
+			$config -> production -> account -> port  = "456";
 			
+			$writer = new \Zend\Config\Writer\Ini();
+			$writer ->setNestSeparator('-');
+			$writer -> toFile(__DIR__.'/../../config/ini/module.config1.ini' , $config);
 			return FALSE;
 		}
 		
