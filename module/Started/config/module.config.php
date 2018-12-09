@@ -19,7 +19,7 @@ return [
                 'options' => [
                     'route'    => '/started[/:action]',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
+                        'controller' => Controller\ConfigController::class,
                         'action'     => 'index',
                     ],
                 ],
@@ -39,6 +39,7 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            Controller\ConfigController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
