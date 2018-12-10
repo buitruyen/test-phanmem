@@ -9,8 +9,22 @@
 	
 	use Zend\Config\Reader\Ini;
 	use Zend\Feed\Reader\Reader;
+	use Zend\ModuleManager\ModuleEvent;
+	use Zend\ModuleManager\ModuleManager;
 	
 	class Module{
+
+		public function init(ModuleManager $moduleManager){
+			$event = $moduleManager -> getEventManager();
+			$event -> attach(ModuleEvent::EVENT_MERGE_CONFIG , [ $this , 'onMergeconfig' ]);
+
+		}
+		
+		public function onMergeconfig(ModuleEvent $event){
+			$configListtener=$event ->getConfigListener();
+			$config=$configListtener ->getMergedConfig(FALSE);
+			
+		}
 		
 		public function getConfig(){
 			$reader = new Ini();
@@ -18,7 +32,14 @@
 			$configRouter = $reader -> fromFile(__DIR__.'/../config/ini/router.ini');
 			$configCV     = include __DIR__.'/../config/controller-view.php';
 			$configArray = array_merge($configRouter , $configCV);
-			return $configArray;
-			
+//			return $configArray;
+			return include __DIR__ . '/../config/module.config.php';
+		}
+		
+		public function getControllerConfig(){
+			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
+		}
+		public function getServiceConfig(){
+			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
 		}
 	}
