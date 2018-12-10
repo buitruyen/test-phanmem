@@ -5,6 +5,7 @@
 	use Database\ChucVu\Worker;
 	use Database\Student;
 	use Database\Teacher;
+	use Zend\Filter\BaseName;
 	use Zend\Loader\AutoloaderFactory;
 	use Zend\Loader\ClassMapAutoloader;
 	use Zend\Loader\StandardAutoloader;
@@ -12,97 +13,22 @@
 	
 	class LearningZendFramWork extends AbstractActionController{
 		
-		public function index04Action(){
-			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
+		// \Zend\I18n\Filter\Alnum()	trích xuất các giá trị chuỗi từ a->z A->Z và các giá trị số
+		public function index01Action()
+		{
+			$filter	= new BaseName();
+			$input	= 'www.zend.vn/public/test.html';
+			$output	= $filter->filter($input);
 			
-			$loader = new ClassMapAutoloader();
-			// Register the class map:
-			$loader -> registerAutoloadMap(LIBARY_PATH.'/Autoload/autoload_classmap.php');
-			$loader -> register();
+			echo '<h3 style="color:red;font-weight:bold;margin-left:50px">\Zend\Filter\BaseName</h3>';
+			echo '<h3 style="color:red;font-weight:bold;margin-left:50px">Input: '.$input.'</h3>';
+			echo '<h3 style="color:red;font-weight:bold;margin-left:50px">Output: '.$output.'</h3>';
 			
-			$student = new Student();
-			$teacher = new Teacher();
-			$worker  = new Worker();
-			$sender2 = new \Mail_Abc_Sender();
-			return FALSE;
 			
+			return false;
 		}
 		
-		public function index05Action(){
-			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
-			
-			$loader = new ClassMapAutoloader(
-				[
-					LIBARY_PATH.'/Autoload/autoload_classmap.php' ,
-					LIBARY_PATH.'/Autoload/classmap.php',
-				]
-			);
-			
-			$loader -> register();
-			
-			$student = new Student();
-			$teacher = new Teacher();
-			$worker  = new Worker();
-			$sender2 = new \Mail_Abc_Sender();
-			$upload  = new \File\Abc\Upload();
-			return FALSE;
-			
-		}
 		
-		public function index06Action(){
-			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
-			
-			AutoloaderFactory ::factory(
-				[
-					'Zend\Loader\ClassMapAutoloader' => [
-						LIBARY_PATH.'/Autoload/autoload_classmap.php' ,
-						LIBARY_PATH.'/Autoload/classmap.php',
-					] ,
-				]
-			
-			);
-			
-			$student = new Student();
-			$teacher = new Teacher();
-			$worker  = new Worker();
-			$sender2 = new \Mail_Abc_Sender();
-			$upload  = new \File\Abc\Upload();
-			return FALSE;
-			
-		}
 		
-		public function index07Action(){
-			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
-			
-			AutoloaderFactory ::factory(
-				[
-					'Zend\Loader\ClassMapAutoloader' => [
-						LIBARY_PATH.'/Autoload/autoload_classmap.php' ,
-						LIBARY_PATH.'/Autoload/classmap.php',
-					] ,
-					'Zend\Loader\StandardAutoloader' => [
-						'autoregister_zf' => TRUE ,
-						'namespaces'      => [
-							'Database' => LIBARY_PATH.'/Database' ,
-							'File\Abc' => LIBARY_PATH.'/File' ,
-						] ,
-						
-						'prefixes' => [
-							'Mail' => LIBARY_PATH.'/Mail' ,
-						] ,
-					] ,
-				]
-			
-			);
-			
-			$student = new Student();
-			$teacher = new Teacher();
-			$worker  = new Worker();
-			$sender2 = new \Mail_Abc_Sender();
-			$upload  = new \File\Abc\Upload();
-			return FALSE;
-			
-		}
 		
-	
 	}
