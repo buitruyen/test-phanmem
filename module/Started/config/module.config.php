@@ -19,28 +19,16 @@ return [
                 'options' => [
                     'route'    => '/started[/:action]',
                     'defaults' => [
-                        'controller' => Controller\ConfigController::class,
-                        'action'     => 'index',
+	                    'controller' => Controller\LearningZendFramWork::class ,
+	                    'action'     => 'index' ,
                     ],
                 ],
-            ],
-            'training' => [
-	            'type'    => Segment::class,
-	            'options' => [
-		            'route'    => '/training/index/[/:action]',
-		            'defaults' => [
-			            'controller' => Controller\TestController::class,
-			            'action'     => 'index',
-		            ],
-	            ],
             ],
         ],
     ],
     'controllers' => [
         'factories' => [
-            Controller\IndexController::class => InvokableFactory::class,
-            Controller\ConfigController::class => InvokableFactory::class,
-            Controller\TestController::class => InvokableFactory::class,
+	        Controller\LearningZendFramWork::class => InvokableFactory::class ,
         ],
     ],
     'view_manager' => [

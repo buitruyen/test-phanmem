@@ -23,9 +23,7 @@
 		public function onMergeconfig(ModuleEvent $event){
 			$configListtener=$event ->getConfigListener();
 			$config=$configListtener ->getMergedConfig(FALSE);
-			echo "<pre style='font-size: 17px;'>";
-			print_r($config['controllers']);
-			echo "</pre>";
+			
 			
 		}
 		
@@ -40,9 +38,9 @@
 		}
 		
 		public function getControllerConfig(){
-			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
+//			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
 		}
 		public function getServiceConfig(){
-			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
+//			echo '<h3 style="color: #0000CC;font-weight: bold">'.__METHOD__.'</h3>';
 		}
 	}
