@@ -23,6 +23,9 @@
 		public function onMergeconfig(ModuleEvent $event){
 			$configListtener=$event ->getConfigListener();
 			$config=$configListtener ->getMergedConfig(FALSE);
+			echo "<pre style='font-size: 17px;'>";
+			print_r($config['controllers']);
+			echo "</pre>";
 			
 		}
 		

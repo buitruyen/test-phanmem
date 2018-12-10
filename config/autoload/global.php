@@ -12,12 +12,12 @@
  */
 
 return [
-//	'controllers'  => [
-//		'factories' => [
-//			Training\Controller\acb::class  => Zend\ServiceManager\Factory\InvokableFactory::class ,
-//			Training\Controller\def::class  => Zend\ServiceManager\Factory\InvokableFactory::class ,
-//
-//
-//		] ,
-//	] ,
+	'controllers'  => [
+		'factories' => [
+			Started\Controller\acb::class  => Zend\ServiceManager\Factory\InvokableFactory::class ,
+			Started\Controller\def::class  => Zend\ServiceManager\Factory\InvokableFactory::class ,
+
+
+		] ,
+	] ,
 ];

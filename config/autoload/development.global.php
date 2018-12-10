@@ -14,7 +14,7 @@
 return [
 //	'controllers'  => [
 //		'factories' => [
-//			Training\Controller\ConfigController::class  => Zend\ServiceManager\Factory\LocalController::class ,
+//			Training\Controller\ConfigController::class  => Zend\ServiceManager\Factory\Local1Controller::class ,
 //
 //		] ,
 //	] ,
