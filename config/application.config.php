@@ -3,7 +3,6 @@
 	if(APPLICATION_ENV == 'production'){
 		$modules[] = 'Training';
 	}
-	
 	/**
 	 * If you need an environment-specific system or application configuration,
 	 * there is an example in the documentation
@@ -14,6 +13,7 @@
 		// Retrieve list of modules used in this application.
 		'modules' => $modules,
 	
+		
 	// These are various options for the listeners attached to the ModuleManager
 	'module_listener_options' => [
 	// This should be an array of paths in which modules reside.

@@ -18,10 +18,6 @@
 			$configRouter = $reader -> fromFile(__DIR__.'/../config/ini/router.ini');
 			$configCV     = include __DIR__.'/../config/controller-view.php';
 			$configArray = array_merge($configRouter , $configCV);
-			echo "<pre style='font-ize: 17px;'>";
-			print_r($configArray);
-			echo "</pre>";
-			
 			return $configArray;
 			
 		}
