@@ -14,22 +14,6 @@
 	use Zend\Mvc\Controller\AbstractActionController;
 	
 	class IndexController extends AbstractActionController{
-		public function index01Action(){
-			$config = \HTMLPurifier_Config ::createDefault();
-			$config -> set('HTML.AllowedElements' , 'div,p');
-			
-			$purifier = new \HTMLPurifier_HTMLPurifier($config);
-			
-			
-			$input    = '<h3>Hello</h3>';
-			$output   = $purifier -> purify($input);
-			
-			echo '<h3 style="color:red;font-weight:bold">Input</h3>'.$input;
-			echo '<h3 style="color:red;font-weight:bold">Output</h3>'.$output;
-			
-			return $this -> response;
-		}
-		
 		public function index02Action(){
 			$config = \HTMLPurifier_Config ::createDefault();
 			
