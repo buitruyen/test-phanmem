@@ -9,5 +9,6 @@
 	
 	// hang so duong dan den thu muc thu vien HTMLPurifier
 	define('HTMLPURIFIER_PREFIX' , APPLICATION_PATH.'/vendor');
+	define('PUBLIC_PATH' , APPLICATION_PATH.'/public');
 
 

@@ -8,7 +8,9 @@
 	namespace Started;
 	
 	use Zend\Config\Reader\Ini;
-	use Zend\Feed\Reader\Reader;
+	use Zend\Filter\StaticFilter;
+	use Zend\Mvc\MvcEvent;
+	use Zend\Mvc\ModuleRouteListener;
 	use Zend\ModuleManager\ModuleEvent;
 	use Zend\ModuleManager\ModuleManager;
 	
@@ -25,6 +27,17 @@
 			$config=$configListtener ->getMergedConfig(FALSE);
 			
 			
+		}
+		public function onBootstrap(MvcEvent $e)
+		{
+			$eventManager        = $e->getApplication()->getEventManager();
+			$moduleRouteListener = new ModuleRouteListener();
+			$moduleRouteListener->attach($eventManager);
+			
+			$filterPlugin	= StaticFilter::getPluginManager();
+			$filterPlugin->setInvokableClass('CreateURLFriendly', '\ZendVN\Filter\CreateURLFriendly');
+			$filterPlugin->setInvokableClass('RemoveCircumflex', '\ZendVN\Filter\RemoveCircumflex');
+			$filterPlugin->setInvokableClass('Pufifer', '\ZendVN\Filter\Pufifer');
 		}
 		
 		public function getConfig(){
