@@ -14,7 +14,7 @@
 	return [
 		'controllers' => [
 			'factories' => [
-				Controller\LearningZendFramWork::class => InvokableFactory::class,
+				Controller\IndexController::class => InvokableFactory::class ,
 			],
 		],
 		'view_manager' => [

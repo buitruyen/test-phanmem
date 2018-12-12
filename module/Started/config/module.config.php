@@ -15,20 +15,20 @@ return [
     'router' => [
         'routes' => [
             'started' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/started[/:action]',
-                    'defaults' => [
-	                    'controller' => Controller\LearningZendFramWork::class ,
-	                    'action'     => 'index' ,
-                    ],
-                ],
-            ],
+		        'type'    => Segment::class,
+		        'options' => [
+			        'route'    => '/started[/:action]',
+			        'defaults' => [
+				        'controller' => Controller\IndexController::class ,
+				        'action'     => 'index' ,
+			        ],
+		        ],
+	        ],
         ],
     ],
     'controllers' => [
         'factories' => [
-	        Controller\LearningZendFramWork::class => InvokableFactory::class ,
+	        Controller\IndexController::class => InvokableFactory::class ,
         ],
     ],
     'view_manager' => [

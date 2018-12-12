@@ -15,7 +15,7 @@
 	use Zend\Escaper\Escaper as Escaper;
 	
 	
-	class LearningZendFramWork extends AbstractActionController
+	class IndexController extends AbstractActionController
 	{
 		public function index01Action()
 		{
