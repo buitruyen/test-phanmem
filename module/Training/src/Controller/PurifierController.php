@@ -16,7 +16,7 @@
 	class PurifierController extends AbstractActionController{
 		public function index01Action(){
 			$config = \HTMLPurifier_Config ::createDefault();
-			$config -> set('HTML.AllowedElements' , 'div,p,h4');
+			$config -> set('HTML.AllowedElements' , 'div,p,h1');
 			
 			$purifier = new \HTMLPurifier_HTMLPurifier($config);
 			
