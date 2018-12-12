@@ -9,62 +9,79 @@
 	
 	namespace Started\Controller;
 	
+	use Zend\View\Model\ViewModel;
+	
 	use Zend\Mvc\Controller\AbstractActionController;
+	use Zend\Escaper\Escaper as Escaper;
+	
 	
 	class LearningZendFramWork extends AbstractActionController
 	{
 		public function index01Action()
 		{
-			echo '<h3 style="color:red;font-weight:bold">' . __METHOD__ . '</h3>';
-			
-			$array	= array(
-				'invokables'	=> array(
-					'Data\Controller\Index'			=> 'Data\Controller\IndexController',
-					'Data\Controller\Filter'		=> 'Data\Controller\FilterController',
-					'Data\Controller\Serializer'	=> 'Data\Controller\SerializerController',
-				));
-			
-			
-			//$serializer	= new \Zend\Serializer\Adapter\PhpSerialize();
-			$serializer	= \Zend\Serializer\Serializer::factory('PhpSerialize');
-			echo $str	= $serializer->serialize($array);
-			echo '<br />';
-			echo $str2	= serialize($array);
-			$obj		= $serializer->unserialize($str);
-			$obj2		= unserialize($str);
-			
-			echo '<pre style="color:red;font-weight:bold">';
-			print_r($obj2);
-			echo '</pre>';
-			
-			return false;
+			$input	= '<script>alert(12)</script>';
+			// $output		= htmlentities($input);
+			echo $output		= htmlspecialchars($input);
+			return $this->response;
 		}
 		
 		public function index02Action()
 		{
-			echo '<h3 style="color:red;font-weight:bold">' . __METHOD__ . '</h3>';
+			$input	= '<script>alert(12)</script>';
+			$escaper	= new \Zend\Escaper\Escaper('utf-8');
+			echo $output	= $escaper->escapeHtml($input);
+			return $this->response;
+		}
+		
+		public function index03Action()
+		{
+			$input = <<<INPUT
+' onmouseover='alert(/ZF2!/);
+INPUT;
+			//$output		= htmlentities($input);
+			$output		= htmlspecialchars($input);
 			
-			$array	= array(
-				'invokables'	=> array(
-					'Data\Controller\Index'			=> 'Data\Controller\IndexController',
-					'Data\Controller\Filter'		=> 'Data\Controller\FilterController',
-					'Data\Controller\Serializer'	=> 'Data\Controller\SerializerController',
-				));
+			echo "<span title='$output'>ZendVN</span>";
+			return $this->response;
+		}
+		
+		public function index04Action()
+		{
+			$input = <<<INPUT
+' onmouseover='alert(/ZF2!/);
+INPUT;
+			$escaper	= new Escaper('utf-8');
+			$output		= $escaper->escapeHtmlAttr($input);
 			
-			
-			$serializer	= new \Zend\Serializer\Adapter\PhpCode();
-			
-			echo $str	= $serializer->serialize($array);
-			echo '<br />';
-			
-			$obj		= $serializer->unserialize($str);
-			
-			
-			echo '<pre style="color:red;font-weight:bold">';
-			print_r($obj);
-			echo '</pre>';
-			
-			
-			return false;
+			echo "<span title='$output'>ZendVN</span>";
+			return $this->response;
+		}
+		
+		public function index05Action(){
+			$viewmModel	= new ViewModel();
+			$viewmModel->setTerminal(true);
+			return $viewmModel;
+		}
+		
+		public function index06Action(){
+			$viewmModel	= new ViewModel();
+			$viewmModel->setTerminal(true);
+			return $viewmModel;
+		}
+		
+		public function index07Action(){
+			$viewmModel	= new ViewModel();
+			$viewmModel->setTerminal(true);
+			return $viewmModel;
 		}
 	}
+
+
+
+
+
+
+
+
+
+
